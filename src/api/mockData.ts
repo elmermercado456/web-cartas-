@@ -24,7 +24,7 @@ export const CATEGORIAS_PRINCIPALES = [
   { nombre: 'Pollerías', foto: 'https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=600&q=80', count: 4 },
   { nombre: 'Cafeterías', foto: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80', count: 4 },
   { nombre: 'Pizzas y Pastas', foto: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', count: 4 },
-  { nombre: 'Carnes y Parrillas', foto: 'https://images.unsplash.com/photo-1544025162-8314520f8c37?auto=format&fit=crop&w=600&q=80', count: 3 }
+  { nombre: 'Carnes y Parrillas', foto: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80', count: 3 }
 ] as const;
 
 export const mockRestaurantes: Restaurante[] = [
@@ -98,7 +98,7 @@ export const mockRestaurantes: Restaurante[] = [
 
   // Carnes y Parrillas
   { 
-    id: '18', nombre: 'Parrilladas El Rancho', latitud: -7.1600, longitud: -78.5080, precio_desde: 45.00, foto: 'https://images.unsplash.com/photo-1544025162-8314520f8c37?auto=format&fit=crop&w=300&q=80', categorias: ['Parrilla', 'Carnes'], categoriaPrincipal: 'Carnes y Parrillas', 
+    id: '18', nombre: 'Parrilladas El Rancho', latitud: -7.1600, longitud: -78.5080, precio_desde: 45.00, foto: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80', categorias: ['Parrilla', 'Carnes'], categoriaPrincipal: 'Carnes y Parrillas', 
     calificacion: 3.7, menu: [
       {id: 'ca1_1', nombre: 'Chorizo Parrillero (2)', descripcion: 'Acompañado de papa sancochada', precio: 16.00, seccion: 'Entradas'},
       {id: 'ca1_2', nombre: 'Bife Ancho', descripcion: 'Corte premium de res (350g) término medio', precio: 55.00, seccion: 'Platos Fuertes'},
