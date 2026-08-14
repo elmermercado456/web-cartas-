@@ -655,11 +655,14 @@ body {
     left: 10px;
     right: 10px;
     width: auto;
-    max-height: 45vh;
+    max-height: 60vh;
     padding: 1rem;
     border-radius: 20px;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+  }
+  .selected-restaurant-card img {
+    height: 120px;
   }
   .home-header h1 {
     font-size: 2rem;
