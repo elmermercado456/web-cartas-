@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Map from './components/Map';
 import { fetchRestaurantes, CATEGORIAS_PRINCIPALES } from './api/mockData';
 import type { Restaurante } from './api/mockData';
-import { Loader2, UtensilsCrossed, X, ChevronLeft, Map as MapIcon, Star, MessageSquare } from 'lucide-react';
+import { Loader2, UtensilsCrossed, X, ChevronLeft, Map as MapIcon, MessageSquare } from 'lucide-react';
 import './index.css';
 
 interface Review {
@@ -25,8 +25,6 @@ function App() {
   
   // Reviews state
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [newComment, setNewComment] = useState('');
-  const [newRating, setNewRating] = useState(5);
 
   // Cargar restaurantes cuando la vista es 'map' y la categoría cambia
   useEffect(() => {
@@ -48,24 +46,10 @@ function App() {
         { id: '2', user: 'Carlos Ruiz', rating: Math.max(1, Math.floor(selectedRest.calificacion - 1)), comment: 'Lo malo: El tiempo de espera fue un poco largo, pero la comida salvó la noche.', date: 'Hace 1 semana' }
       ];
       setReviews(mocks);
-      setNewComment('');
-      setNewRating(5);
     }
   }, [selectedRest]);
 
-  const handleAddReview = () => {
-    if (!newComment.trim()) return;
-    const review: Review = {
-      id: Date.now().toString(),
-      user: 'Tú (Usuario)',
-      rating: newRating,
-      comment: newComment,
-      date: 'Justo ahora'
-    };
-    setReviews([review, ...reviews]);
-    setNewComment('');
-    setNewRating(5);
-  };
+
 
   const handleCategorySelect = (categoria: string) => {
     setSelectedCategory(categoria);
@@ -204,27 +188,29 @@ function App() {
             <div className="menu-items-list">
               {activeTab === 'Calificaciones' ? (
                 <div className="reviews-container animate-slide-up">
-                  <div className="add-review-box">
-                    <h4>Deja tu calificación y comentario</h4>
-                    <div className="star-selector">
-                      {[1,2,3,4,5].map(star => (
-                        <Star 
-                          key={star} 
-                          size={24} 
-                          onClick={() => setNewRating(star)} 
-                          fill={star <= newRating ? '#fbbf24' : 'transparent'} 
-                          color={star <= newRating ? '#fbbf24' : '#cbd5e1'} 
-                          style={{cursor: 'pointer'}} 
-                        />
-                      ))}
+                  <div className="add-review-box" style={{textAlign: 'center'}}>
+                    <h4>¿Quieres dejar una reseña?</h4>
+                    <p style={{color: 'var(--text-muted)', fontSize: '0.9rem', margin: '0.5rem 0 1rem'}}>
+                      Para mantener la calidad de las opiniones, envíanos tu comentario y nosotros lo subiremos.
+                    </p>
+                    <div style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
+                      <a 
+                        href={`https://wa.me/51999999999?text=Hola,%20quiero%20dejar%20una%20reseña%20para%20el%20restaurante%20${encodeURIComponent(selectedRest.nombre)}`} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="btn-primary btn-small"
+                        style={{backgroundColor: '#25D366', textDecoration: 'none', display: 'inline-flex', alignItems: 'center'}}
+                      >
+                        WhatsApp
+                      </a>
+                      <a 
+                        href={`mailto:contacto@gastrofinder.com?subject=Reseña para ${encodeURIComponent(selectedRest.nombre)}`} 
+                        className="btn-primary btn-small"
+                        style={{backgroundColor: '#3b82f6', textDecoration: 'none', display: 'inline-flex', alignItems: 'center'}}
+                      >
+                        Correo
+                      </a>
                     </div>
-                    <textarea 
-                      placeholder="¿Qué te pareció? Cuéntanos lo bueno y lo malo..." 
-                      value={newComment} 
-                      onChange={(e) => setNewComment(e.target.value)}
-                      className="review-textarea"
-                    />
-                    <button className="btn-primary btn-small" onClick={handleAddReview}>Publicar Reseña</button>
                   </div>
 
                   <div className="reviews-list-render">
