@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Map from './components/Map';
 import { fetchRestaurantes, CATEGORIAS_PRINCIPALES } from './api/mockData';
 import type { Restaurante } from './api/mockData';
-import { SlidersHorizontal, Loader2, UtensilsCrossed, X, ChevronLeft, Map as MapIcon, Star, MessageSquare } from 'lucide-react';
+import { Loader2, UtensilsCrossed, X, ChevronLeft, Map as MapIcon, Star, MessageSquare } from 'lucide-react';
 import './index.css';
 
 interface Review {

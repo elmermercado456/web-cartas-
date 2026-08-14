@@ -133,7 +133,7 @@ const Map: React.FC<MapProps> = ({ restaurantes, sortOrder, onSelectRestaurante 
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
 
-        {sortedRestaurantes.map((rest, index) => (
+        {sortedRestaurantes.map((rest) => (
           <Marker 
             key={rest.id} 
             position={[rest.latitud, rest.longitud]}
