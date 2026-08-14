@@ -195,7 +195,7 @@ function App() {
                     </p>
                     <div style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
                       <a 
-                        href={`https://wa.me/51999999999?text=Hola,%20quiero%20dejar%20una%20reseña%20para%20el%20restaurante%20${encodeURIComponent(selectedRest.nombre)}`} 
+                        href={`https://wa.me/51965173400?text=Hola,%20quiero%20dejar%20una%20reseña%20para%20el%20restaurante%20${encodeURIComponent(selectedRest.nombre)}`} 
                         target="_blank" 
                         rel="noreferrer"
                         className="btn-primary btn-small"
