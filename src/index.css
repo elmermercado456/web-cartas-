@@ -17,7 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Pacifico', cursive;
 }
 
 body {
@@ -26,11 +26,11 @@ body {
   overflow: hidden; 
 }
 
-/* Background Pattern (Hispanic Azulejo Style) */
+/* Background Pattern (Elegant Incaic Step Pattern) */
 .home-container {
   height: 100vh;
   width: 100vw;
-  background-color: #fdfbf7;
+  background-color: #fcfbf9;
   position: relative;
   overflow-y: auto;
   padding: 40px 20px;
@@ -41,12 +41,13 @@ body {
   top: 0; left: 0; width: 100vw; height: 100vh;
   background-color: transparent;
   background-image: 
-    radial-gradient(circle at center, #1e3a8a 8%, transparent 9%),
-    radial-gradient(circle at center, transparent 18%, #1e3a8a 19%, #1e3a8a 22%, transparent 23%),
-    linear-gradient(45deg, transparent 48%, #1e3a8a 49%, #1e3a8a 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, #1e3a8a 49%, #1e3a8a 51%, transparent 52%);
-  background-size: 80px 80px;
-  opacity: 0.08;
+    linear-gradient(135deg, #eee7d5 25%, transparent 25%),
+    linear-gradient(225deg, #eee7d5 25%, transparent 25%),
+    linear-gradient(45deg, #eee7d5 25%, transparent 25%),
+    linear-gradient(315deg, #eee7d5 25%, transparent 25%);
+  background-position: 20px 0, 20px 0, 0 0, 0 0;
+  background-size: 40px 40px;
+  opacity: 0.5;
   z-index: 0;
   pointer-events: none;
 }
@@ -101,8 +102,7 @@ body {
 }
 
 .subtitle-chicha {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--text-muted);
   margin-top: 10px;
   font-weight: 500;
@@ -239,10 +239,10 @@ body {
   color: white;
 }
 .category-overlay h3 {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 6px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 .badge {
   background: var(--primary);
@@ -499,7 +499,10 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .leaflet-container {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Pacifico', cursive;
+}
+.leaflet-layer {
+  filter: grayscale(100%) sepia(100%) hue-rotate(-45deg) saturate(500%) contrast(1.1);
 }
 .popup-card { width: 200px; }
 .popup-image {

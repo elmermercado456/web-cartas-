@@ -69,7 +69,7 @@ function App() {
             <div style={{ backgroundColor: 'var(--primary)', padding: '10px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(239, 68, 68, 0.3)' }}>
               <UtensilsCrossed size={36} color="white" />
             </div>
-            <h1>Búscalo.pe</h1>
+            <h1>BúscaloPe</h1>
           </div>
           <p className="subtitle-chicha">¡Encuentra tu point bravazo en la ciudad!</p>
         </header>
