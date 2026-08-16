@@ -130,7 +130,7 @@ const Map: React.FC<MapProps> = ({ restaurantes, sortOrder, onSelectRestaurante 
         
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
 
         {sortedRestaurantes.map((rest) => (
@@ -138,9 +138,6 @@ const Map: React.FC<MapProps> = ({ restaurantes, sortOrder, onSelectRestaurante 
             key={rest.id} 
             position={[rest.latitud, rest.longitud]}
             icon={createCustomIcon(rest.calificacion)}
-            eventHandlers={{
-              click: () => onSelectRestaurante(rest),
-            }}
           >
             <Popup>
               <div className="popup-card">
@@ -159,12 +156,21 @@ const Map: React.FC<MapProps> = ({ restaurantes, sortOrder, onSelectRestaurante 
                     {'★'.repeat(Math.round(rest.calificacion))}{'☆'.repeat(5 - Math.round(rest.calificacion))}
                   </div>
                 </div>
-                <p className="popup-price">S/ {rest.precio_desde.toFixed(2)}</p>
-                <div className="popup-tags">
+                <div className="popup-tags" style={{marginBottom: '12px'}}>
                   {rest.categorias.map(cat => (
                     <span key={cat} className="tag">{cat}</span>
                   ))}
                 </div>
+                <button 
+                  className="btn-primary" 
+                  style={{ width: '100%', padding: '8px', fontSize: '13px' }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectRestaurante(rest);
+                  }}
+                >
+                  Ver el menú
+                </button>
               </div>
             </Popup>
           </Marker>

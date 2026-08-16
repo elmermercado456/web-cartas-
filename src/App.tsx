@@ -108,6 +108,12 @@ function App() {
     );
   }
 
+  // Filtrar restaurantes por búsqueda
+  const filteredRestaurantes = restaurantes.filter(r => 
+    r.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    r.categorias.some(c => c.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   // Map View
   return (
     <div className="app-container">
@@ -130,46 +136,9 @@ function App() {
           </div>
         )}
 
-        {!loading && selectedRest && (
-          <div className="selected-restaurant-card animate-slide-up">
-            <img src={selectedRest.foto} alt={selectedRest.nombre} />
-            <div className="card-content">
-              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px'}}>
-                <h3 style={{margin: 0, paddingRight: '8px'}}>{selectedRest.nombre}</h3>
-                <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
-                  <span className="status-badge">Abierto</span>
-                  <div style={{
-                    backgroundColor: selectedRest.calificacion === 5 ? 'var(--primary)' : 'var(--primary)', 
-                    color: 'var(--text-main)', 
-                    padding: '4px 8px', 
-                    borderRadius: '12px', 
-                    fontSize: '12px', 
-                    fontWeight: 'bold', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    gap: '4px'
-                  }}>
-                  <span style={{letterSpacing: '1px'}}>
-                    {'★'.repeat(Math.round(selectedRest.calificacion))}{'☆'.repeat(5 - Math.round(selectedRest.calificacion))}
-                  </span> 
-                  {selectedRest.calificacion.toFixed(1)}
-                </div>
-              </div>
-              <p className="price-highlight">S/ {selectedRest.precio_desde.toFixed(2)}</p>
-              <div className="tags-container">
-                {selectedRest.categorias.map(cat => (
-                  <span key={cat} className="modern-tag">{cat}</span>
-                ))}
-              </div>
-              <button className="btn-primary" onClick={() => {
-                setIsMenuOpen(true);
-                // Set default tab to the first available section
-                const firstSection = ['Entradas', 'Platos Fuertes', 'Postres', 'Bebidas'].find(
-                  sec => selectedRest.menu.some(p => p.seccion === sec)
-                );
-                setActiveTab(firstSection || '');
-              }}>Ver Menú Completo</button>
-            </div>
+        {!loading && (
+          <div style={{color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '10px'}}>
+            {filteredRestaurantes.length} locales encontrados. Selecciona un pin en el mapa para ver más detalles.
           </div>
         )}
       </aside>
@@ -218,14 +187,14 @@ function App() {
                         target="_blank" 
                         rel="noreferrer"
                         className="btn-primary btn-small"
-                        style={{backgroundColor: '#25D366', textDecoration: 'none', display: 'inline-flex', alignItems: 'center'}}
+                        style={{backgroundColor: '#25D366', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', color: 'white'}}
                       >
                         WhatsApp
                       </a>
                       <a 
                         href={`mailto:contacto@gastrofinder.com?subject=Reseña para ${encodeURIComponent(selectedRest.nombre)}`} 
                         className="btn-primary btn-small"
-                        style={{backgroundColor: '#3b82f6', textDecoration: 'none', display: 'inline-flex', alignItems: 'center'}}
+                        style={{backgroundColor: '#3b82f6', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', color: 'white'}}
                       >
                         Correo
                       </a>
@@ -269,10 +238,31 @@ function App() {
 
       {/* Map Area */}
       <main className="map-area">
+        <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 1000, width: '300px', maxWidth: 'calc(100vw - 80px)' }}>
+          <div className="search-container" style={{ margin: 0, boxShadow: 'var(--shadow-lg)' }}>
+            <input 
+              type="text" 
+              className="search-input" 
+              placeholder="Buscar platos o locales..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button className="btn-search" style={{ padding: '0 16px' }}>
+              <Search size={18} />
+            </button>
+          </div>
+        </div>
         <Map 
-          restaurantes={restaurantes} 
+          restaurantes={filteredRestaurantes} 
           sortOrder={'precioAsc'} 
-          onSelectRestaurante={setSelectedRest}
+          onSelectRestaurante={(rest) => {
+            setSelectedRest(rest);
+            setIsMenuOpen(true);
+            const firstSection = ['Entradas', 'Platos Fuertes', 'Postres', 'Bebidas'].find(
+              sec => rest.menu.some(p => p.seccion === sec)
+            );
+            setActiveTab(firstSection || '');
+          }}
         />
       </main>
     </div>
