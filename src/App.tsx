@@ -150,9 +150,22 @@ function App() {
             <button className="close-btn" onClick={() => setIsMenuOpen(false)}>
               <X size={24} />
             </button>
-            <div className="menu-modal-header">
-              <img src={selectedRest.foto} alt={selectedRest.nombre} />
-              <h2>Carta de {selectedRest.nombre}</h2>
+            <div className="menu-modal-header" style={{ height: '200px', position: 'relative' }}>
+              <img src={selectedRest.foto} alt={selectedRest.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(44,45,46,0.6), transparent)' }}></div>
+            </div>
+            
+            <div style={{ padding: '0 20px', marginTop: '-40px', position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--bg-color)', border: '4px solid var(--card-adobe)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'var(--shadow-lg)' }}>
+                 <UtensilsCrossed size={40} color="var(--primary)" />
+              </div>
+              <h2 style={{ color: 'var(--title-purple)', margin: '10px 0 5px 0', fontSize: '1.6rem', textAlign: 'center', fontWeight: 'bold' }}>{selectedRest.nombre}</h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--green-huacatay)', fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '10px' }}>
+                <span style={{ letterSpacing: '2px' }}>
+                  {'★'.repeat(Math.round(selectedRest.calificacion))}{'☆'.repeat(5 - Math.round(selectedRest.calificacion))}
+                </span>
+                <span>{selectedRest.calificacion.toFixed(1)}</span>
+              </div>
             </div>
             
             <div className="menu-tabs">
@@ -217,19 +230,21 @@ function App() {
                   </div>
                 </div>
               ) : (
-                selectedRest.menu
-                  .filter(plato => plato.seccion === activeTab)
-                  .map(plato => (
-                    <div key={plato.id} className="menu-item animate-slide-up">
-                      <div className="menu-item-content">
-                        <h4>{plato.nombre}</h4>
-                        <p>{plato.descripcion}</p>
+                <div className="menu-grid">
+                  {selectedRest.menu
+                    .filter(plato => plato.seccion === activeTab)
+                    .map(plato => (
+                      <div key={plato.id} className="menu-item-card animate-slide-up">
+                        <div className="menu-item-card-content">
+                          <h4>{plato.nombre}</h4>
+                          <p>{plato.descripcion}</p>
+                        </div>
+                        <div className="menu-item-card-price">
+                          S/ {plato.precio.toFixed(2)}
+                        </div>
                       </div>
-                      <div className="menu-item-price">
-                        S/ {plato.precio.toFixed(2)}
-                      </div>
-                    </div>
-                  ))
+                    ))}
+                </div>
               )}
             </div>
           </div>
