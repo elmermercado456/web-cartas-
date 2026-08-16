@@ -271,12 +271,16 @@ function App() {
           restaurantes={filteredRestaurantes} 
           sortOrder={'precioAsc'} 
           onSelectRestaurante={(rest) => {
-            setSelectedRest(rest);
-            setIsMenuOpen(true);
-            const firstSection = ['Entradas', 'Platos Fuertes', 'Postres', 'Bebidas'].find(
-              sec => rest.menu.some(p => p.seccion === sec)
-            );
-            setActiveTab(firstSection || '');
+            if (rest) {
+              setSelectedRest(rest);
+              setIsMenuOpen(true);
+              const firstSection = ['Entradas', 'Platos Fuertes', 'Postres', 'Bebidas'].find(
+                sec => rest.menu.some(p => p.seccion === sec)
+              );
+              setActiveTab(firstSection || '');
+            } else {
+              setSelectedRest(null);
+            }
           }}
         />
       </main>
