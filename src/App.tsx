@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Map from './components/Map';
 import { fetchRestaurantes, CATEGORIAS_PRINCIPALES } from './api/mockData';
 import type { Restaurante } from './api/mockData';
-import { Loader2, UtensilsCrossed, X, ChevronLeft, Map as MapIcon, MessageSquare } from 'lucide-react';
+import { Loader2, UtensilsCrossed, X, ChevronLeft, Map as MapIcon, MessageSquare, Search } from 'lucide-react';
 import './index.css';
 
 interface Review {
@@ -22,6 +22,7 @@ function App() {
   const [selectedRest, setSelectedRest] = useState<Restaurante | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState("");
   
   // Reviews state
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -72,6 +73,20 @@ function App() {
             <h1>BúscaloPe</h1>
           </div>
           <p className="subtitle-chicha">¡Encuentra tu point bravazo en la ciudad!</p>
+
+          <div className="search-container">
+            <input 
+              type="text" 
+              className="search-input" 
+              placeholder="Buscar cevichería, pollo a la brasa, chifa..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button className="btn-search">
+              <Search size={20} />
+              Buscar
+            </button>
+          </div>
         </header>
 
         <main className="categories-grid">
@@ -119,19 +134,21 @@ function App() {
           <div className="selected-restaurant-card animate-slide-up">
             <img src={selectedRest.foto} alt={selectedRest.nombre} />
             <div className="card-content">
-              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-                <h3>{selectedRest.nombre}</h3>
-                <div style={{
-                  backgroundColor: selectedRest.calificacion === 5 ? '#fbbf24' : '#eab308', 
-                  color: selectedRest.calificacion === 5 ? '#78350f' : 'white', 
-                  padding: '4px 8px', 
-                  borderRadius: '12px', 
-                  fontSize: '12px', 
-                  fontWeight: 'bold', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: '4px'
-                }}>
+              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px'}}>
+                <h3 style={{margin: 0, paddingRight: '8px'}}>{selectedRest.nombre}</h3>
+                <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                  <span className="status-badge">Abierto</span>
+                  <div style={{
+                    backgroundColor: selectedRest.calificacion === 5 ? 'var(--primary)' : 'var(--primary)', 
+                    color: 'var(--text-main)', 
+                    padding: '4px 8px', 
+                    borderRadius: '12px', 
+                    fontSize: '12px', 
+                    fontWeight: 'bold', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '4px'
+                  }}>
                   <span style={{letterSpacing: '1px'}}>
                     {'★'.repeat(Math.round(selectedRest.calificacion))}{'☆'.repeat(5 - Math.round(selectedRest.calificacion))}
                   </span> 
