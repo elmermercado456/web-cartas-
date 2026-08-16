@@ -26,25 +26,27 @@ body {
   overflow: hidden; 
 }
 
-/* Background Pattern (Inca/Hispanic subtle geometric) */
+/* Background Pattern (Hispanic Azulejo Style) */
 .home-container {
   height: 100vh;
   width: 100vw;
-  background-color: #ffffff;
-  background-image: 
-    linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 75%, #f1f5f9 75%, #f1f5f9),
-    linear-gradient(45deg, #f1f5f9 25%, transparent 25%, transparent 75%, #f1f5f9 75%, #f1f5f9);
-  background-size: 60px 60px;
-  background-position: 0 0, 30px 30px;
+  background-color: #fdfbf7;
   position: relative;
   overflow-y: auto;
   padding: 40px 20px;
 }
 .home-container::after {
   content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(255, 255, 255, 0.7); /* Suavizar el patrón para que no distraiga */
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at center, #1e3a8a 8%, transparent 9%),
+    radial-gradient(circle at center, transparent 18%, #1e3a8a 19%, #1e3a8a 22%, transparent 23%),
+    linear-gradient(45deg, transparent 48%, #1e3a8a 49%, #1e3a8a 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, #1e3a8a 49%, #1e3a8a 51%, transparent 52%);
+  background-size: 80px 80px;
+  opacity: 0.08;
   z-index: 0;
   pointer-events: none;
 }
@@ -72,15 +74,12 @@ body {
   width: 100%;
 }
 
-/* Logo Cursive with Fluorescent touches */
+/* Logo Cursive */
 .logo-area h1 {
   font-family: 'Pacifico', cursive;
   font-size: 4.5rem;
-  color: #1a1a1a;
-  text-shadow: 
-    3px 3px 0px #ff0055, /* Fluorescent Red/Pink */
-    -2px -2px 0px #00ff66, /* Fluorescent Green */
-    5px 5px 0px #ffff00; /* Fluorescent Yellow */
+  color: #111111;
+  text-shadow: none;
   margin: 0;
   line-height: 1.2;
 }
@@ -137,11 +136,8 @@ body {
 .sidebar-header h1 {
   font-family: 'Pacifico', cursive;
   font-size: 2.2rem;
-  color: #1a1a1a;
-  text-shadow: 
-    1.5px 1.5px 0px #ff0055, 
-    -1px -1px 0px #00ff66, 
-    2.5px 2.5px 0px #ffff00;
+  color: #111111;
+  text-shadow: none;
   margin: 0;
 }
 .logo-icon {
