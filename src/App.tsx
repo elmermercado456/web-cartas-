@@ -67,9 +67,9 @@ function App() {
         <header className="home-header">
           <div className="logo-area">
             <UtensilsCrossed size={40} className="text-primary" />
-            <h1>GastroFinder</h1>
+            <h1>Búscalo PE</h1>
           </div>
-          <p>¿Qué te apetece comer hoy en Cajamarca?</p>
+          <p className="subtitle-chicha">¡Encuentra tu point bravazo en la ciudad!</p>
         </header>
 
         <main className="categories-grid">

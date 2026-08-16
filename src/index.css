@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #f8fafc;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --bg-color: #111111;
+  --text-main: #f8fafc;
+  --text-muted: #a3a3a3;
+  --primary: #FF00FF; /* Neon Pink */
+  --primary-hover: #00FFFF; /* Cyan */
+  --glass-bg: rgba(20, 20, 20, 0.9);
+  --glass-border: rgba(255, 0, 255, 0.5);
   --radius: 16px;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 4px 6px -1px rgba(255, 0, 255, 0.4), 0 2px 4px -1px rgba(255, 0, 255, 0.2);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 255, 255, 0.5), 0 4px 6px -2px rgba(0, 255, 255, 0.3);
 }
 
 * {
@@ -92,14 +92,25 @@ body {
   gap: 0.75rem;
 }
 .sidebar-header h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(to right, #2563eb, #9333ea);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  color: #00FF00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: none;
+  -webkit-background-clip: initial;
+  text-shadow: 
+    2px 2px 0 #FF00FF,
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px  1px 0 #000,
+    1px  1px 0 #000,
+    4px 4px 0 #000;
+  transform: rotate(-2deg);
 }
 .logo-icon {
-  color: #2563eb;
+  color: #00FFFF;
+  filter: drop-shadow(2px 2px 0 #000);
 }
 
 .subtitle {
@@ -164,11 +175,11 @@ body {
 
 /* Selected Restaurant Card */
 .selected-restaurant-card {
-  background: white;
+  background: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border: 2px solid #00FFFF;
 }
 .selected-restaurant-card img {
   width: 100%;
@@ -206,15 +217,24 @@ body {
   width: 100%;
   padding: 0.75rem;
   background: var(--primary);
-  color: white;
-  border: none;
+  color: #FFFF00;
+  border: 2px solid #000;
   border-radius: 8px;
-  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  box-shadow: 4px 4px 0 #00FFFF;
 }
 .btn-primary:hover {
   background: var(--primary-hover);
+  color: #000;
+  text-shadow: none;
+  box-shadow: 4px 4px 0 #FF00FF;
+  transform: translate(-2px, -2px);
 }
 
 .animate-slide-up {
@@ -279,12 +299,13 @@ body {
 }
 
 .menu-modal {
-  background: white;
+  background: #111;
   width: 90%;
   max-width: 500px;
   max-height: 85vh;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+  border: 3px solid #FF00FF;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -415,7 +436,7 @@ body {
 .home-container {
   height: 100vh;
   width: 100vw;
-  background: var(--bg-color);
+  background: radial-gradient(circle at top center, #4A00E0 0%, #FF00FF 50%, #000000 100%);
   overflow-y: auto;
   padding: 40px 20px;
 }
@@ -434,20 +455,44 @@ body {
 }
 
 .logo-area h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(to right, #2563eb, #9333ea);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-family: 'Bangers', cursive;
+  font-size: 5rem;
+  color: #FFFF00; /* Neon Yellow */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: none;
+  -webkit-background-clip: initial;
+  text-shadow: 
+    3px 3px 0 #FF00FF,
+    -2px -2px 0 #000,  
+    2px -2px 0 #000,
+    -2px  2px 0 #000,
+    2px  2px 0 #000,
+    6px 6px 0 #000,
+    8px 8px 0 #00FFFF;
+  transform: rotate(-3deg);
+  margin: 0;
+  line-height: 1;
 }
 
 .text-primary {
-  color: var(--primary);
+  color: #FFFF00;
+  filter: drop-shadow(2px 2px 0 #000) drop-shadow(2px 2px 0 #FF00FF);
 }
 
 .home-header p {
   color: var(--text-muted);
   font-size: 1.2rem;
+}
+
+.subtitle-chicha {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  color: #00FFFF;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  letter-spacing: 1px;
+  transform: rotate(2deg);
+  margin-top: 10px;
 }
 
 .categories-grid {
@@ -464,13 +509,15 @@ body {
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  border: 3px solid #00FFFF;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px) scale(1.02) rotate(2deg);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+  border-color: #FF00FF;
 }
 
 .category-card img {
@@ -496,19 +543,35 @@ body {
 }
 
 .category-overlay h3 {
-  font-size: 1.5rem;
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  color: #FFFF00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin-bottom: 6px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 
+    2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    3px 3px 0 #FF00FF;
+  transform: rotate(-2deg);
 }
 
 .badge {
-  background: var(--primary);
-  color: white;
-  padding: 4px 10px;
+  background: #FF00FF;
+  color: #FFFF00;
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
   align-self: flex-start;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+  text-shadow: 1px 1px 0 #000;
+  transform: rotate(2deg);
 }
 
 /* Sidebar Utilities */
@@ -572,10 +635,10 @@ body {
   gap: 1.5rem;
 }
 .add-review-box {
-  background: #f8fafc;
+  background: #111;
   padding: 1rem;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 2px solid #00FFFF;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -615,10 +678,10 @@ body {
   gap: 1rem;
 }
 .review-card {
-  background: white;
+  background: #1a1a1a;
   padding: 1rem;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #333;
 }
 .review-header {
   display: flex;
